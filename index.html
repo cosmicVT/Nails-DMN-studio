@@ -10,7 +10,7 @@
       --pink: #fce4ec;
       --mint: #d0f0e0;
       --text: #333;
-      --accent: #b2e3d4; /* subtle mint for highlights */
+      --accent: #b2e3d4;
       --white: #fff;
     }
 
@@ -22,7 +22,7 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffe6ee, #f9c6d1); /* soft light pink gradient */
+      background: linear-gradient(135deg, #ffe6ee, #f9c6d1);
       color: var(--text);
     }
 
@@ -153,6 +153,59 @@
         transform: translateY(0);
       }
     }
+
+    /* ========== Responsive Media Queries ========== */
+
+    @media (min-width: 768px) {
+      header {
+        padding: 1.5rem 4rem;
+      }
+
+      .nav-button {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+
+      h1, h2 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.3rem;
+      }
+
+      .service-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+    }
+
+    @media (max-width: 767px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .logo {
+        margin-bottom: 0.5rem;
+      }
+
+      .nav-button {
+        width: 100%;
+        max-width: 300px;
+        margin: 0.5rem auto;
+      }
+
+      .service-list {
+        padding: 1rem;
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -181,11 +234,11 @@
       <h2>My Services</h2>
       <div class="divider"></div>
       <ul class="service-list">
-        <li>Custom press ons</li>
+        <li>Custom Press Ons</li>
         <li>Gel x</li>
-        <li>Poly Gell</li>
+        <li>Poly Gel</li>
         <li>Nail Art & Custom Designs</li>
-        <li>Fill ins</li>
+        <li>Fill Ins</li>
       </ul>
     </section>
 
@@ -218,6 +271,18 @@
       });
       document.getElementById(pageId).classList.add('active');
     }
+
+    // Optional: Device detection
+    document.addEventListener("DOMContentLoaded", () => {
+      const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        console.log("User is on a mobile device");
+        // Add mobile-specific behaviors if needed
+      } else {
+        console.log("User is on a desktop or tablet");
+        // Add desktop-specific behaviors if needed
+      }
+    });
   </script>
 </body>
 </html>
