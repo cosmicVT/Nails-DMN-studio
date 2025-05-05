@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nails DMN Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #fce4ec;
+      --mint: #d0f0e0;
+      --text: #333;
+      --accent: #b2e3d4; /* subtle mint for highlights */
+      --white: #fff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe6ee, #f9c6d1); /* soft light pink gradient */
+      color: var(--text);
+    }
+
+    header {
+      background-color: var(--mint);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--text);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .page {
+      display: none;
+      padding: 4rem 2rem;
+      text-align: center;
+      animation: fadeInUp 0.6s ease forwards;
+      background-color: transparent;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .nav-button {
+      background-color: var(--mint);
+      color: var(--text);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background-color: var(--accent);
+      color: var(--white);
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent);
+      margin: 2rem auto;
+      border-radius: 10px;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .service-list li {
+      background-color: var(--mint);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      font-weight: 500;
+    }
+
+    .service-list li:hover {
+      transform: translateY(-5px);
+      background-color: var(--accent);
+      color: var(--white);
+    }
+
+    footer {
+      background-color: transparent;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 3rem;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Nails DMN</div>
+    <nav>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('services')">Services</a></li>
+        <li><a onclick="showPage('about')">About Me</a></li>
+        <li><a onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="page active">
+      <h1>Welcome to Nails DMN</h1>
+      <p>Modern nail artistry with a personal touch. Clean aesthetics. Professional care.</p>
+      <button class="nav-button" onclick="showPage('services')">View Services</button>
+      <button class="nav-button" onclick="showPage('about')">About Me</button>
+      <button class="nav-button" onclick="showPage('contact')">Contact</button>
+    </section>
+
+    <section id="services" class="page">
+      <h2>My Services</h2>
+      <div class="divider"></div>
+      <ul class="service-list">
+        <li>Custom press ons</li>
+        <li>Gel x</li>
+        <li>Poly Gell</li>
+        <li>Nail Art & Custom Designs</li>
+        <li>Fill ins</li>
+      </ul>
+    </section>
+
+    <section id="about" class="page">
+      <h2>About Me</h2>
+      <div class="divider"></div>
+      <p>
+        My name is Damian and Nails DMN is a buisness built off of my hobby for nails and making cool designs for myself and others, I am currently a junior in highschool and I hope that my buisness will grow and mabye become something huge some day, thank you for reading this if you need anything at all please contact me, thank you <33. And for anyone wondering my boyfriend made the website.
+      </p>
+    </section>
+
+    <section id="contact" class="page">
+      <h2>Get in Touch</h2>
+      <div class="divider"></div>
+      <p>Email: <a href="mailto:trinitydiss67@gmail.com">trinitydiss67@gmail.com</a></p>
+      <p>Phone: (260) 909-3268</p>
+      <p>Instagram: <a href="https://www.instagram.com/nail.dmnstudio?igsh=ZmZ0YXdmMTI5OTNh" target="_blank">@nails.dmnstudio</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Follow us on Instagram: <a href="https://www.instagram.com/nail.dmnstudio?igsh=ZmZ0YXdmMTI5OTNh" target="_blank">@nails.dmnstudio</a></p>
+    <p>&copy; 2025 Nails DMN Studio</p>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      document.getElementById(pageId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
