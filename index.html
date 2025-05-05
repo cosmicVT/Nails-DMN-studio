@@ -24,6 +24,7 @@
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(135deg, #ffe6ee, #f9c6d1);
       color: var(--text);
+      transition: all 0.3s ease;
     }
 
     header {
@@ -42,6 +43,21 @@
       font-size: 2rem;
       font-family: 'Playfair Display', serif;
       color: var(--text);
+    }
+
+    .toggle-view-button {
+      background-color: var(--accent);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: background 0.3s;
+    }
+
+    .toggle-view-button:hover {
+      background-color: var(--mint);
     }
 
     nav ul {
@@ -153,11 +169,24 @@
         transform: translateY(0);
       }
     }
+
+    /* Mobile view styles */
+    body.mobile-view nav ul {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    body.mobile-view nav {
+      align-items: flex-start;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">Nails DMN</div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div class="logo">Nails DMN</div>
+      <button class="toggle-view-button" onclick="toggleView()">Switch View</button>
+    </div>
     <nav>
       <ul>
         <li><a onclick="showPage('home')">Home</a></li>
@@ -211,7 +240,6 @@
     <p>&copy; 2025 Nails DMN Studio</p>
   </footer>
 
-  <!-- ✅ Updated script below -->
   <script>
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(page => {
@@ -220,25 +248,13 @@
       document.getElementById(pageId).classList.add('active');
     }
 
-    // Enhanced device detection
+    function toggleView() {
+      document.body.classList.toggle('mobile-view');
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-      const isSmallScreen = window.innerWidth <= 768;
-
-      const isMobile = (
-        /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)
-        || isTouchDevice
-        || isSmallScreen
-      );
-
-      if (isMobile) {
-        console.log("Mobile device detected");
-        // You can place mobile-specific logic here
-      } else {
-        console.log("Desktop or large-screen device detected");
-        // You can place desktop-specific logic here
-      }
+      // Default view: Desktop
+      document.body.classList.remove('mobile-view');
     });
   </script>
 </body>
