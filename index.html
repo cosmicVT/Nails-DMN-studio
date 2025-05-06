@@ -143,12 +143,30 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s;
       font-weight: 500;
+      cursor: pointer;
+      position: relative;
     }
 
     .service-list li:hover {
       transform: translateY(-5px);
       background-color: var(--accent);
       color: var(--white);
+    }
+
+    .service-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding-top: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease, padding-top 0.4s ease;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .service-list li.expanded .service-details {
+      max-height: 300px;
+      opacity: 1;
+      padding-top: 0.75rem;
     }
 
     footer {
@@ -210,11 +228,55 @@
       <h2>My Services</h2>
       <div class="divider"></div>
       <ul class="service-list">
-        <li>Custom Press Ons</li>
-        <li>Gel x</li>
-        <li>Poly Gel</li>
-        <li>Nail Art & Custom Designs</li>
-        <li>Fill Ins</li>
+        <li onclick="toggleServiceDetails(this)">
+          Custom Press Ons
+          <div class="service-details">
+            <p><strong>Price:</strong> $25</p>
+            <p>Custom press-ons made to fit your style and nails perfectly.</p>
+          </div>
+        </li>
+        <li onclick="toggleServiceDetails(this)">
+          Gel x
+          <div class="service-details">
+            <p><strong>Price:</strong> $30</p>
+            <p>Flexible, lightweight extensions that last with proper care.</p>
+          </div>
+        </li>
+        <li onclick="toggleServiceDetails(this)">
+          Poly Gel
+          <div class="service-details">
+            <p><strong>Price:</strong> $35</p>
+            <p>A hybrid nail enhancement that combines hard gel and acrylic.</p>
+          </div>
+        </li>
+        <li onclick="toggleServiceDetails(this)">
+          Nail Art & Custom Designs
+          <div class="service-details">
+            <p><strong>Price:</strong> $10+</p>
+            <p>From simple accents to full-set custom artwork—your vision made real.</p>
+          </div>
+        </li>
+        <li onclick="toggleServiceDetails(this)">
+          Fill Ins
+          <div class="service-details">
+            <p><strong>Price:</strong> $20</p>
+            <p>Fill your grown-out sets and maintain a fresh look.</p>
+          </div>
+        </li>
+        <li onclick="toggleServiceDetails(this)">
+          Soak Offs
+          <div class="service-details">
+            <p><strong>Price:</strong> $10</p>
+            <p>Gentle removal of gel, acrylic, or poly gel sets.</p>
+          </div>
+        </li>
+        <li onclick="toggleServiceDetails(this)">
+          Natural Nail Gel Paint
+          <div class="service-details">
+            <p><strong>Price:</strong> $18</p>
+            <p>Shiny, chip-free gel polish for healthy, natural nails.</p>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -252,8 +314,20 @@
       document.body.classList.toggle('mobile-view');
     }
 
+    function toggleServiceDetails(item) {
+      // Close any other expanded service menus
+      const allServices = document.querySelectorAll('.service-list li');
+      allServices.forEach(service => {
+        if (service !== item) {
+          service.classList.remove('expanded');
+        }
+      });
+
+      // Toggle the clicked service's details
+      item.classList.toggle('expanded');
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
-      // Default view: Desktop
       document.body.classList.remove('mobile-view');
     });
   </script>
